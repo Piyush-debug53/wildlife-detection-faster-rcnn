@@ -157,9 +157,9 @@ pip install -r requirements.txt
 
 ### Sample Detection
 
-![Detection](outputs/images/bear(1000).jpg)
-![Detection](outputs/images/bear(1001).jpg)
-![Detection](outputs/images/bear(1002).jpg)
+![Detection](outputs/images/bear (1000).jpg)
+![Detection](outputs/images/bear (1001).jpg)
+![Detection](outputs/images/bear (1002).jpg)
 
 ---
 
@@ -207,7 +207,7 @@ Unauthorized reproduction or submission is prohibited.
 
 ---
 
-## 🚀 Future Work
+## Future Work
 
 * Real-time deployment using camera feed
 * Edge device integration (Jetson Nano / ESP32-CAM)
@@ -215,7 +215,7 @@ Unauthorized reproduction or submission is prohibited.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Piyush Bhatia**
 
