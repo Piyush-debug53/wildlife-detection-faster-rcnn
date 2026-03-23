@@ -201,8 +201,8 @@ The model was evaluated using standard object detection metrics.
 
 A detailed comparative report between YOLOv8 and Faster R-CNN will be included soon.
 
-© Piyush Bhatia, 2026
-For academic and portfolio use only.
+© Piyush Bhatia, 2026  
+For academic and portfolio use only.  
 Unauthorized reproduction or submission is prohibited.
 
 ---
