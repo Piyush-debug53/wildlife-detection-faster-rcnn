@@ -49,15 +49,12 @@ The same dataset was used for both **YOLOv8 and Faster R-CNN** to ensure a **fai
 
 ## Annotation Conversion
 
-The dataset was originally in YOLO format.  
-For Faster R-CNN compatibility, annotations were converted into **COCO format** using:
-
-[scripts/coco_conversion.py](scripts/coco_conversion.py)
-
-Run the script:
+The dataset was originally in YOLO format.
+For Faster R-CNN compatibility, annotations were converted into **COCO format** using:  
 
 ```bash
-python scripts/coco_conversion.py
+scripts/coco_conversion.py
+```
 
 ---
 
