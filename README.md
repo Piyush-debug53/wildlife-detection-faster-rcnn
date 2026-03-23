@@ -157,9 +157,9 @@ pip install -r requirements.txt
 
 ### Sample Detection
 
-![Detection](outputs/images/bear (1000).jpg)
-![Detection](outputs/images/bear (1001).jpg)
-![Detection](outputs/images/bear (1002).jpg)
+![Detection](outputs/images/bear_01.jpg)
+![Detection](outputs/images/bear_02.jpg)
+![Detection](outputs/images/bear_03.jpg)
 
 ---
 
