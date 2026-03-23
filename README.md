@@ -34,9 +34,18 @@ The same dataset was used for both **YOLOv8 and Faster R-CNN** to ensure a **fai
     **Download full dataset:**
 👉 [Google Drive Link](https://drive.google.com/file/d/1dRf1TJCpRDk9r1wVF9HN4N0NuCwbtZol/view?usp=sharing)
 
-> Note: Only a **sample dataset** is included in this repository which includes annotations.json file for train, val and test.
+> Note: Only a **sample dataset** is included in this repository which already includes annotations.json file for train, val and test.
 
 ---
+
+## CLASSES
+
+```markdown
+- Bear
+- Deer
+- Dog 
+- Tiger  
+- Elephant  
 
 ## Annotation Conversion
 
@@ -134,6 +143,16 @@ python src/inference.py
 
 ---
 
+## Requirements
+
+All dependencies are listed in `requirements.txt`.
+
+Install using:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Demo
 
 ### Sample Detection
@@ -180,7 +199,7 @@ The model was evaluated using standard object detection metrics.
 
 ## Report
 
-A detailed comparative report between YOLOv8 and Faster R-CNN is included.
+A detailed comparative report between YOLOv8 and Faster R-CNN will be included soon.
 
 © Piyush Bhatia, 2026
 For academic and portfolio use only.
