@@ -10,6 +10,9 @@ This project implements a **wildlife object detection system using Faster R-CNN*
 
 It is part of a **comparative study with YOLOv8**, where both models are trained on the **same dataset** to analyze the trade-off between **speed (YOLO)** and **accuracy (Faster R-CNN)**.
 
+    YOLOv8 implementation can be found here:
+    🔗 https://github.com/Piyush-debug53/real-time-wildlife_detection_YOLOv8s.git
+    
 ---
 
 ## Problem Statement
@@ -52,7 +55,7 @@ The same dataset was used for both **YOLOv8 and Faster R-CNN** to ensure a **fai
 The dataset was originally in YOLO format.
 For Faster R-CNN compatibility, annotations were converted into **COCO format** using:  
 
-```bash
+```markdown
 scripts/coco_conversion.py
 ```
 
@@ -155,11 +158,13 @@ pip install -r requirements.txt
 
 ## Demo
 
-### Sample Detection
+#### Sample Results
 
-![Detection](outputs/images/bear_01.jpg)
-![Detection](outputs/images/bear_02.jpg)
-![Detection](outputs/images/bear_03.jpg)
+| Input Image | Detection Output |
+|-------------|------------------|
+| ![](Inputs/images/bear_(1).jpg) | ![](outputs/images/bear_(1).jpg) |
+| ![](Inputs/images/bear_(2).jpg) | ![](outputs/images/bear_(2).jpg) |
+| ![](Inputs/images/bear_(3).jpg) | ![](outputs/images/bear_(3).jpg) |
 
 ---
 
@@ -167,33 +172,34 @@ pip install -r requirements.txt
 
 The model was evaluated using standard object detection metrics.
 
-* **mAP@50:** ~
-* Confusion Matrix and evaluation plots are included in the `results/` folder
+* **mAP@50:** ~ 0.349
+* Confusion Matrix included in the `results/` folder
 
 ### Visual Results
 
 * Confusion Matrix
-* Precision-Recall Curves
-* Detection Outputs
+![Confusion_matrix](confusion_matrix.png)
 
 ---
 
 ## Key Insights
 
-* Faster R-CNN provides **higher accuracy** but slower inference compared to YOLOv8
-* Suitable for applications where **precision is more important than speed**
-* COCO format enables structured dataset handling
+* Faster R-CNN achieved moderate accuracy (mAP ~0.35) after 30 epochs of training
+* The model performs well on some classes (e.g., tiger, bear) but struggles with others due to false negatives (background predictions)
+* Training Faster R-CNN requires careful tuning, longer training, and balanced datasets
+* The model is sensitive to dataset distribution and convergence is slower compared to YOLO
 
 ---
 
 ## Comparison with YOLOv8
 
-| Feature      | YOLOv8      | Faster R-CNN   |
-| ------------ | ----------- | -------------- |
-| Speed        | Very Fast   | Slower         |
-| Accuracy     | Good        | Higher         |
-| Use Case     | Real-time   | High precision |
-| Architecture | One-stage   | Two-stage      |
+| Feature      | YOLOv8                   | Faster R-CNN       |
+| ------------ | ------------------------ | ------------------ |
+| mAP@50       | **0.55**                 | **0.35**           |
+| Speed        | Very Fast                | Slower             |
+| Accuracy     | Higher (in my project)   | Moderate           |
+| Use Case     | Real-time                | research           |
+| Architecture | One-stage                | Two-stage          |
 
 ---
 
@@ -209,9 +215,20 @@ Unauthorized reproduction or submission is prohibited.
 
 ## Future Work
 
-* Real-time deployment using camera feed
-* Edge device integration (Jetson Nano / ESP32-CAM)
-* Model optimization for speed
+* Improve Faster R-CNN performance using better data balancing
+* *ncrease training epochs and apply advanced augmentation
+* Deploy YOLO model for real-time wildlife monitoring
+* Edge device integration (ESP32-CAM)
+
+---
+
+## Conclusion
+
+Although Faster R-CNN is theoretically known for high accuracy, in this implementation YOLOv8 outperformed Faster R-CNN in both accuracy and speed.
+
+This performance difference is primarily due to faster convergence and a more optimized training pipeline in YOLOv8, which allowed it to generalize better on the given dataset. Faster R-CNN showed higher false negatives, indicating sensitivity to dataset distribution and the need for further tuning.
+
+Therefore, YOLOv8 is more suitable for this project, especially for real-time wildlife detection scenarios.
 
 ---
 
