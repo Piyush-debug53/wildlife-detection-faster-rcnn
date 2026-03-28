@@ -3,14 +3,16 @@ import json
 import torch
 from PIL import Image
 import torchvision.transforms as T
+import random
 
 
 class AnimalDataset(torch.utils.data.Dataset):
-    def __init__(self, root):
+    def __init__(self, root, train=True):
         self.root = root
+        self.train = train
 
-        # Default transform: PIL -> Tensor
-        self.transforms = T.ToTensor()
+        # Transforms
+        self.to_tensor = T.ToTensor()
 
         annotation_path = os.path.join(root, "annotations.json")
 
@@ -37,7 +39,6 @@ class AnimalDataset(torch.utils.data.Dataset):
 
         # Load image
         img = Image.open(img_path).convert("RGB")
-        img = self.transforms(img)  # Convert to tensor
 
         # Get annotations
         anns = self.image_id_to_annotations.get(img_id, [])
@@ -50,13 +51,28 @@ class AnimalDataset(torch.utils.data.Dataset):
             boxes.append([x, y, x + w, y + h])
             labels.append(ann["category_id"])
 
+        # Convert to tensor
         if len(boxes) == 0:
-            # Handle images with no objects
             boxes = torch.zeros((0, 4), dtype=torch.float32)
             labels = torch.zeros((0,), dtype=torch.int64)
         else:
             boxes = torch.tensor(boxes, dtype=torch.float32)
             labels = torch.tensor(labels, dtype=torch.int64)
+
+        # -------------------------------
+        #  DATA AUGMENTATION (SAFE)
+        # -------------------------------
+        if self.train and random.random() < 0.5:
+            # Horizontal flip
+            img = T.functional.hflip(img)
+
+            width = img.width
+
+            if len(boxes) > 0:
+                boxes[:, [0, 2]] = width - boxes[:, [2, 0]]
+
+        # Convert image to tensor AFTER augmentation
+        img = self.to_tensor(img)
 
         target = {
             "boxes": boxes,
@@ -68,3 +84,4 @@ class AnimalDataset(torch.utils.data.Dataset):
 
     def __len__(self):
         return len(self.images)
+

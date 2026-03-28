@@ -6,7 +6,7 @@ from torchvision.models.detection import fasterrcnn_resnet50_fpn
 # ----------------------------
 # Config
 # ----------------------------
-MODEL_PATH = "animal_detector.pth"
+MODEL_PATH = "animal_detector_final.pth"   # new trained model
 CONFIDENCE_THRESHOLD = 0.7   # start with 0.4
 
 class_names = [
